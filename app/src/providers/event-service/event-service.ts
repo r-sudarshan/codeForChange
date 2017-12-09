@@ -12,9 +12,7 @@ export class EventServiceProvider {
   }
 
   getEvents(){
-    this.http.get("/assets/temp/events.json")
-    	.map(Response => {return Response.json();})
-    	.subscribe(data => {
-    	});
+    return this.http.get("/assets/temp/events.json")
+      .map(response => response);
   }
 }

@@ -12,11 +12,14 @@ export class EventsPage {
   public events = []
 
   constructor(private eventService: EventServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
+  	
+  	}
 
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EventsPage');
+  ionViewDidLoad(){
+    this.eventService.getEvents()
+      .subscribe((response) => {
+        	this.events = response["results"];
+      });
   }
 
 }
