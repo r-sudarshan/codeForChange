@@ -7,12 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { EventsPage } from '../pages/events/events';
+import { LoginPage } from '../pages/login/login';
+import { ModalContentPage } from '../pages/login/login';
 import { EventServiceProvider } from '../providers/event-service/event-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    EventsPage
+    EventsPage,
+    LoginPage,
+    ModalContentPage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,9 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    EventsPage
+    EventsPage,
+    LoginPage,
+    ModalContentPage
   ],
   providers: [
     StatusBar,
