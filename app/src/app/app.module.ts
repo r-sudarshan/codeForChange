@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { EventsPage } from '../pages/events/events';
 import { LoginPage } from '../pages/login/login';
-import { ModalContentPage } from '../pages/login/login';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { EventServiceProvider } from '../providers/event-service/event-service';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
     MyApp,
     EventsPage,
     LoginPage,
-    ModalContentPage
+    WelcomePage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +28,7 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
     MyApp,
     EventsPage,
     LoginPage,
-    ModalContentPage
+    WelcomePage
   ],
   providers: [
     StatusBar,
