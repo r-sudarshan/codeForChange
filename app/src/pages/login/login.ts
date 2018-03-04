@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Platform, LoadingController } from 'ionic-angular';
+
+import { EventsPage } from '../events/events';
+import { MenuPage } from '../menu/menu';
+import { LoginServiceProvider } from '../../providers/login-service/login-service';
 
 @IonicPage()
 @Component({
@@ -13,11 +17,23 @@ export class LoginPage {
   };
 
   constructor(
+    public navCtrl: NavController,
     public platform: Platform,
     public params: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController,
+    public loginService: LoginServiceProvider
   ) {
     
+  }
+
+  doLogin() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    //loader.present();
+    //this.loginService.login()
+    this.navCtrl.setRoot(MenuPage);
   }
 
   dismiss() {

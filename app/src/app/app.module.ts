@@ -6,35 +6,39 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
-import { EventsPage } from '../pages/events/events';
+import { EventsPageModule } from '../pages/events/events.module';
 import { LoginPage } from '../pages/login/login';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { MenuPage } from '../pages/menu/menu';
 import { EventServiceProvider } from '../providers/event-service/event-service';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    EventsPage,
     LoginPage,
-    WelcomePage
+    WelcomePage,
+    MenuPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    EventsPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    EventsPage,
     LoginPage,
-    WelcomePage
+    WelcomePage,
+    MenuPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    EventServiceProvider
+    EventServiceProvider,
+    LoginServiceProvider
   ]
 })
 export class AppModule {}
