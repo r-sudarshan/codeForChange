@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, Platform, LoadingController } from 'ionic-angular';
-
-import { EventsPage } from '../events/events';
 import { MenuPage } from '../menu/menu';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
 
@@ -28,11 +26,6 @@ export class LoginPage {
   }
 
   doLogin() {
-    let loader = this.loadingCtrl.create({
-      content: "Please wait..."
-    });
-    //loader.present();
-    //this.loginService.login()
     this.navCtrl.setRoot(MenuPage);
   }
 
