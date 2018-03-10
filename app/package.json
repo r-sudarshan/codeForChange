@@ -4,12 +4,14 @@
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
+  "config": {
+    "ionic_config_dir": "app"
+  },
   "scripts": {
     "clean": "ionic-app-scripts clean",
-    "build:local": "ionic-app-scripts build",
-    "build": "true",
+    "build": "ionic-app-scripts build --wwwDir ../www",
     "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
+    "ionic:build": "ionic-app-scripts build --wwwDir ../www",
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {

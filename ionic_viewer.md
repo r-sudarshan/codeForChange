@@ -59,4 +59,16 @@ Go to the ionic website and check that the build has passed.
 
 ## Deploy to channel
 
+Once the build passes, click on the deploy link in the builds page next to the successful build and deploy to the master channel.
+Once this is done you will be able to view the app on the viewer.
+
 ## View the app 
+
+Download the ionic view app on your iPhone or Android and login with the ionic pro credentials.
+If your builds pass then you should be able to see your app and test it.
+
+## Notes
+
+The build process is customized since we dont commit the root of the app to the root of github.
+This means that there is a copy of ionic config in the root of git repo and there is another package.json to make the build run in the app folder.
+Also the www output directory is created at the root of the repo - this is again needed for ionic to work.
