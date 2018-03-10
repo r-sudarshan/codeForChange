@@ -12,13 +12,19 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { MenuPage } from '../pages/menu/menu';
 import { EventServiceProvider } from '../providers/event-service/event-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { WishesPage } from '../pages/wishes/wishes';
+import { WishAddPage } from '../pages/wish-add/wish-add';
+import { WishServiceProvider } from '../providers/wish-service/wish-service';
+import { DonationsPage } from './../pages/donations/donations';
+import { DonationServiceProvider } from '../providers/donation-service/donation-service';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     WelcomePage,
-    MenuPage
+    MenuPage,
+    WishAddPage
   ],
   imports: [
     BrowserModule,
@@ -31,14 +37,17 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     MyApp,
     LoginPage,
     WelcomePage,
-    MenuPage
+    MenuPage,
+    WishAddPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EventServiceProvider,
-    LoginServiceProvider
+    LoginServiceProvider,
+    WishServiceProvider,
+    DonationServiceProvider
   ]
 })
 export class AppModule {}
