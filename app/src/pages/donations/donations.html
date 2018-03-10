@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Donations</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div padding>
+    <button ion-button color="primary" block (click)="donateMoney()">Donate</button>
+  </div>
+  
+  <ion-list no-lines>
+    <button ion-item *ngFor="let item of DonationService.items">
+      {{ item.text }}
+    </button> 
+  </ion-list>
+</ion-content>

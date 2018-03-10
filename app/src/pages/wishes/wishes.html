@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Wishes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="wishAdd()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines>
+    <button ion-item *ngFor="let item of WishService.items" (click)="itemSelected(item)">
+      {{ item.text }}
+    </button> 
+  </ion-list>
+</ion-content>
