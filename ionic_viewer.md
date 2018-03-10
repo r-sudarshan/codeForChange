@@ -52,6 +52,9 @@ iMac:app hari$
 
 ## Pushing code to viewer
 
+Make sure that you do a git pull --rebase from origin on github and get all changes before you push to ionic view.
+If there are conflicts or issues with pushing to remote ionic, then it is safer to delete the ionic view app and recreate it.
+
 Simply run 'git push ionic master" or your branch to push code and test.
 
 This will  print out log showing the a build was triggered on the ionic website. There is a root level package.json file to make sure this build passes.
