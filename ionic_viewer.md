@@ -49,3 +49,14 @@ origin
 iMac:app hari$ 
 
 ~~~~
+
+## Pushing code to viewer
+
+Simply run 'git push ionic master" or your branch to push code and test.
+
+This will  print out log showing the a build was triggered on the ionic website. There is a root level package.json file to make sure this build passes.
+Go to the ionic website and check that the build has passed.
+
+## Deploy to channel
+
+## View the app 
