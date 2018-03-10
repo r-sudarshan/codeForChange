@@ -9,8 +9,6 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class AuthServiceProvider {
-  // private _headers = {headers: new HttpHeaders().set('SecretKey', 'TestSecretBSSChangeInProd')};
-
   private _data = {SecretKey: 'TestSecretBSSChangeInProd',Username: 'code4change',
               Password: 'ChangeMe123!', RememberMe: false};
 
@@ -19,14 +17,9 @@ export class AuthServiceProvider {
   }
 
   apiUrl = 'https://crm.beyond.org.sg/BSSTest';
-  testUrl = 'https://jsonplaceholder.typicode.com/posts';
-
-  // params = new HttpParams().set('xhrFields', 'true');
   
   postData() {
-    //application/x-www-form-urlencode
-      this.http.post('/Ext.Sec1.Login.json', this._data)//,
-      // {headers: new HttpHeaders({'Content-Type': 'aapplication/x-www-form-urlencoded; charset=UTF-8'})})
+      this.http.post(this.apiUrl + '/Ext.Sec1.Login.json', this._data)
       .subscribe(
         (data:any) => {
           console.log(data);
