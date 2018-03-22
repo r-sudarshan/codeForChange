@@ -1,23 +1,41 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginServiceProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello LoginServiceProvider Provider');
+  constructor(public http: Http) {
+    
   }
 
-  apiUrl = 'https://crm.beyond.org.sg/BSSTest';
-
   login(account: any) {
-    return new Promise ((resolve, reject) => {
-      this.http.post(this.apiUrl + '/Ext.Sec1.Login.json',
-                     {SecretKey: 'TestSecretBSSChangeInProd', Username: account.username, Password: account.password, RememberMe: false}
+  /*
+    this.http.post('/login',
+                     { 
+                       "data": JSON.stringify(
+                         {'SecretKey': 'TestSecretBSSChangeInProd', 
+                         'Username': account.username,
+                         'Password': account.password, 
+                         'RememberMe': false})
+                       }, {responseType: 'text'}
                     )
-                .subscribe(data => {resolve(data);}
-                           , err => {reject(err)})
+                .map(res => res)
+                .subscribe(data =>                
+                  {console.log("success");console.log(data); }
+                           , err => {console.log(err);})
+*/
+                          
+    return this.http.post('/postToRandomApi', {
+        "data": JSON.stringify({
+          "title":"foo",
+          "body":"basdar",
+          "userId":1
+        })
     })
+      .map(response => response);
+
+      
+    
   };
 }
