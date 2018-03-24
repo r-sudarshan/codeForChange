@@ -39,9 +39,12 @@ export class LoginPage {
                 document.getElementById("LoginMessage").innerHTML = JSON.stringify("not working!");
               }
             );*/
+            /*
             this.loginService.login(this.account).subscribe(resp => {
               console.log(resp)
             });
+            */
+           this.navCtrl.push(MenuPage);
   }
 
   dismiss() {
