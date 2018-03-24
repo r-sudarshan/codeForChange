@@ -10,9 +10,9 @@ import { LoginServiceProvider } from '../../providers/login-service/login-servic
 })
 export class LoginPage {
   responseData: any;
-  account: { username: string, password: string } = {
-    username: "code4change",
-    password: "ChangeMe123!"
+  account: { Username: string, Password: string } = {
+    Username: "code4change",
+    Password: "ChangeMe123!"
   };
 
   constructor(
@@ -26,25 +26,19 @@ export class LoginPage {
     
   }
 
-  doLogin() {/*
-    this.loginService.login(this.account).then(result => 
-                {
-                  this.responseData = result;
-                  localStorage.setItem('userData', JSON.stringify(this.responseData));
-                  this.navCtrl.push(MenuPage);
-                }, 
-              (err) => {
-                console.log("user not found!");
-                document.getElementById("LoginResult").innerHTML = "HttpResponse: " + JSON.stringify(err);
-                document.getElementById("LoginMessage").innerHTML = JSON.stringify("not working!");
-              }
-            );*/
-            /*
-            this.loginService.login(this.account).subscribe(resp => {
-              console.log(resp)
-            });
-            */
-           this.navCtrl.push(MenuPage);
+  doLogin() {
+    this.loginService.login(this.account).subscribe(
+      (response) => {
+        console.log(response["d"]["RetMsg"]);
+        this.navCtrl.push(MenuPage);
+
+      }
+      // ,(error) => {
+      //   console.log("errorLogin: ", error.error);
+      //   this.navCtrl.push(MenuPage);
+      // }
+    )
+    this.navCtrl.push(MenuPage);
   }
 
   dismiss() {
