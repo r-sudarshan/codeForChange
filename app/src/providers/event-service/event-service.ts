@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 
@@ -8,11 +8,37 @@ import 'rxjs/add/operator/map';
 export class EventServiceProvider {
   
   constructor(public http: HttpClient) {
-    console.log('Hello EventServiceProvider Provider');
   }
 
   getEvents(){
+    var params = {
+      "SecretKey":"TestSecretBSSChangeInProd",
+      "EventName":"",
+      "EventType":"",
+      "GroupID":"",
+      "EventStatus":"",
+      "EventTags":"",
+      "OwnerGroup":"",
+      "RegStatus":"",
+      "StartDate":"1 Mar 2015",
+      "EndDate":"1 Mar 2018",
+      "CreatedBy":"",
+      "ShowEvent":"",
+      "ParentEvent":""
+    };
+
+    var encodedParams = encodeURIComponent(JSON.stringify(params));
+    let head = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Accept': 'application/json, text/javascript, */*; q=0.01'});
+    let r_options = {headers: head};
+
+      return this.http.post(
+        'https://crm.beyond.org.sg/BSSTest/Ext.Evt1.MainListing_Get.json', 
+        'data=' + encodedParams,
+        r_options)
+      .map(response => response);
+/*
     return this.http.get("/assets/temp/events.json")
       .map(response => response);
+      */
   }
 }

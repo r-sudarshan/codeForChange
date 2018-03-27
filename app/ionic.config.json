@@ -4,5 +4,19 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies":[
+        {
+            "path":"/login",
+            "proxyUrl": "https://crm.beyond.org.sg/BSSTest/Ext.Sec1.Login.json"
+        },
+        {
+            "path":"/postToRandomApi",
+            "proxyUrl":"https://jsonplaceholder.typicode.com/posts"
+        },
+        {
+            "path":"/getEvents",
+            "proxyUrl":"https://crm.beyond.org.sg/BSSTest/Ext.Evt1.MainListing_Get.json"
+        }
+    ]
 }

@@ -11,13 +11,12 @@
 
 <ion-content padding>
   <ion-card *ngFor="let event of events">
-    <img [src]="event.image"/>
     <ion-card-content>
       <ion-card-title>
-        {{event.name}}
+        {{event.EventName}}
       </ion-card-title>
       <p>
-        {{event.description}}
+        {{event.LongDesc}}
       </p>
     </ion-card-content>
 

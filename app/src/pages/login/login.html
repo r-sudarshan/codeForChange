@@ -14,20 +14,17 @@
 
       <ion-item>
         <ion-label floating>Username</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+        <ion-input type="text" [(ngModel)]="account.Username" name="username"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label fixed>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="account.Password" name="password"></ion-input>
       </ion-item>
 
       <div padding>
         <button ion-button color="primary" block>Login</button>
       </div>
-
-      <p id="LoginResult"></p>
-      <p id="LoginMessage"></p>
     </ion-list>
   </form>
 </ion-content>
