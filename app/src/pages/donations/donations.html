@@ -8,16 +8,26 @@
 
 </ion-header>
 
-
-<ion-content>
-
+<ion-content padding>
+  
   <div padding>
     <button ion-button color="primary" block (click)="donateMoney()">Donate</button>
   </div>
+  <div *ngIf="donations?.length;else no_data_templ">
+      <ion-card *ngFor="let donation of donations">
+        <ion-card-content>
+          <ion-card-title>
+            {{donation.PID}}
+          </ion-card-title>
+          <p>
+            {{donation.LongDesc}}
+          </p>
+        </ion-card-content>
+    </ion-card>
+  </div>
   
-  <ion-list no-lines>
-    <button ion-item *ngFor="let item of DonationService.items">
-      {{ item.text }}
-    </button> 
-  </ion-list>
+  <ng-template #no_data_templ>
+       No donations recorded...
+  </ng-template>
+
 </ion-content>

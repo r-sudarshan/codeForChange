@@ -9,13 +9,19 @@ import { DonationServiceProvider } from './../../providers/donation-service/dona
   templateUrl: 'donations.html',
 })
 export class DonationsPage {
+  
+  public donations = []
 
   constructor(public DonationService: DonationServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonationsPage');
-    this.DonationService.load();
+    this.DonationService.getDonations()
+      .subscribe((response) => {
+          console.log(response["d"]["RetData"]["Tbl"]["Rows"]);
+          this.donations = response["d"]["RetData"]["Tbl"]["Rows"];
+      });
   }
 
   donateMoney() {

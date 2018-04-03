@@ -1,4 +1,5 @@
 import { EventsPage } from '../events/events';
+import { DonationsPage } from '../donations/donations';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 
@@ -14,8 +15,9 @@ export interface PageInterface {
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-	
-  rootPage = 'EventsPage';
+  
+  rootPage = 'DonationsPage';
+  //rootPage = 'EventsPage';
   @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
