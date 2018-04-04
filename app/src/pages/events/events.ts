@@ -18,7 +18,6 @@ export class EventsPage {
   ionViewDidLoad(){
     this.eventService.getEvents()
       .subscribe((response) => {
-          console.log(response["d"]["RetData"]["Tbl"]["Rows"]);
           this.events = response["d"]["RetData"]["Tbl"]["Rows"];
       });
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Platform, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Platform, LoadingController, AlertController } from 'ionic-angular';
 import { MenuPage } from '../menu/menu';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
 
@@ -21,24 +21,34 @@ export class LoginPage {
     public params: NavParams,
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
+    public alertCrl : AlertController,
     public loginService: LoginServiceProvider
   ) {
     
   }
 
   doLogin() {
+    let loader = this.loadingCtrl.create({
+      content: "Authenticating. Please wait..."
+    });
+    loader.present();
     this.loginService.login(this.account).subscribe(
       (response) => {
-        console.log(response["d"]["RetMsg"]);
-        this.navCtrl.push(MenuPage);
-
+        loader.dismiss();
+        console.log(response);
+        if (response['d']['RetVal'] != -1){
+          let alert = this.alertCrl.create({
+            title: 'Login Unsuccessful',
+            subTitle: 'Wrong username or password',
+            buttons: ['Dismiss']
+          });
+          alert.present();
+        }
+        else {
+          this.navCtrl.push(MenuPage);
+        }
       }
-      // ,(error) => {
-      //   console.log("errorLogin: ", error.error);
-      //   this.navCtrl.push(MenuPage);
-      // }
     )
-    this.navCtrl.push(MenuPage);
   }
 
   dismiss() {

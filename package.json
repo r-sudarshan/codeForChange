@@ -5,5 +5,8 @@
     "install": "cd app && npm install",
     "prebuild": "mkdir www",
     "build": "cd app && npm run build"
+  },
+  "dependencies": {
+    "moment": "^2.22.0"
   }
 }

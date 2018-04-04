@@ -5,9 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import moment from 'moment';
 
 import { MyApp } from './app.component';
-import { EventsPageModule } from '../pages/events/events.module';
 import { LoginPage } from '../pages/login/login';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { MenuPage } from '../pages/menu/menu';
@@ -30,7 +30,6 @@ import { DonationServiceProvider } from '../providers/donation-service/donation-
   imports: [
     BrowserModule,
     HttpClientModule,
-    EventsPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

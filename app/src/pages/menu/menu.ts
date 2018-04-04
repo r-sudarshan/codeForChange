@@ -17,10 +17,10 @@ export interface PageInterface {
 export class MenuPage {
   
   rootPage = 'DonationsPage';
-  //rootPage = 'EventsPage';
   @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
+    {title : 'Donations', pageName : 'DonationsPage', icon: 'shuffle'},
   	{ title: 'Events', pageName: 'EventsPage', icon: 'shuffle'}
   ];
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import * as moment from 'moment';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -10,7 +10,12 @@ export class EventServiceProvider {
   constructor(public http: HttpClient) {
   }
 
+  
+
   getEvents(){
+    let startSearchDate = moment().format('DD MMM YYYY');
+    let endSearchDate = moment().add(1, 'month').format('DD MMM YYYY');
+
     var params = {
       "SecretKey":"TestSecretBSSChangeInProd",
       "EventName":"",
@@ -20,13 +25,12 @@ export class EventServiceProvider {
       "EventTags":"",
       "OwnerGroup":"",
       "RegStatus":"",
-      "StartDate":"1 Mar 2015",
-      "EndDate":"1 Mar 2018",
+      "StartDate":startSearchDate,
+      "EndDate":endSearchDate,
       "CreatedBy":"",
       "ShowEvent":"",
       "ParentEvent":""
     };
-
     var encodedParams = encodeURIComponent(JSON.stringify(params));
     let head = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Accept': 'application/json, text/javascript, */*; q=0.01'});
     let r_options = {headers: head};
@@ -36,9 +40,5 @@ export class EventServiceProvider {
         'data=' + encodedParams,
         r_options)
       .map(response => response);
-/*
-    return this.http.get("/assets/temp/events.json")
-      .map(response => response);
-      */
   }
 }
