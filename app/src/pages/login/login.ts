@@ -9,7 +9,6 @@ import { LoginServiceProvider } from '../../providers/login-service/login-servic
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  responseData: any;
   account: { Username: string, Password: string } = {
     Username: "code4change",
     Password: "ChangeMe123!"
