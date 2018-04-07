@@ -20,8 +20,8 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
-    {title : 'Donations', pageName : 'DonationsPage', icon: 'shuffle'},
-  	{ title: 'Events', pageName: 'EventsPage', icon: 'shuffle'}
+    { title : 'Donations', pageName : DonationsPage.name, icon: 'shuffle'},
+  	{ title: 'Events', pageName: EventsPage.name, icon: 'shuffle'}
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
