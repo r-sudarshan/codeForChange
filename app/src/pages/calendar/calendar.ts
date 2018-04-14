@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventServiceProvider } from '../../providers/event-service/event-service';
-
+import * as moment from 'moment';
 /**
  * Generated class for the CalendarPage page.
  *
@@ -16,35 +16,32 @@ import { EventServiceProvider } from '../../providers/event-service/event-servic
 })
 export class CalendarPage {
 
-  public raw_events=[]
+  public event_details=[]
 
-  public events = [
-    {
-      year: 2018,
-      month: 3,
-      date: 25
-    },
-    {
-      year: 2018,
-      month: 3,
-      date: 26
-    }
-  ];
+  public events = [];
   
   constructor(private eventService: EventServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
     
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CalendarPage');
     this.eventService.getEvents()
       .subscribe((response) => {
-          this.raw_events = response["d"]["RetData"]["Tbl"]["Rows"];
-      });
+          var e = response["d"]["RetData"]["Tbl"]["Rows"];
+          e.forEach(element => {
+            var start=moment(element.StartDate);
+            var end=moment(element.EndDate);
+            while(start<=end){
+              let r = {year:start.year(),month:start.month(),date:start.day()}
+              this.events.push(r)
+              start.add(1,'day')
+            };
+          });
+        });
   }
 
   onDaySelect($event){
-    console.log($event);
+
   }
 
   onMonthSelect($event){

@@ -13,8 +13,8 @@ export class EventServiceProvider {
   
 
   getEvents(){
-    let startSearchDate = moment().format('DD MMM YYYY');
-    let endSearchDate = moment().add(1, 'month').format('DD MMM YYYY');
+    let startSearchDate = moment().subtract(1,'year').format('DD MMM YYYY');
+    let endSearchDate = moment().add(1, 'year').format('DD MMM YYYY');
 
     var params = {
       "SecretKey":"TestSecretBSSChangeInProd",
