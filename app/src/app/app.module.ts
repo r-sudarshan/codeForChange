@@ -18,6 +18,7 @@ import { WishAddPage } from '../pages/wish-add/wish-add';
 import { WishServiceProvider } from '../providers/wish-service/wish-service';
 import { DonationsPage } from './../pages/donations/donations';
 import { DonationServiceProvider } from '../providers/donation-service/donation-service';
+import { CalendarModule } from 'ionic3-calendar-en';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DonationServiceProvider } from '../providers/donation-service/donation-
   imports: [
     BrowserModule,
     HttpClientModule,
+    CalendarModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
