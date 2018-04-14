@@ -22,4 +22,16 @@ export class LoginServiceProvider {
         r_options)
       .map(response => response);
   }
+
+  getLoginInfo() {
+    let head = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Accept': 'application/json, text/javascript, */*; q=0.01'});
+    let r_options = {headers: head, dataType: "string"};
+    var params = { "SecretKey" : "TestSecretBSSChangeInProd" }
+    var encodedParams = encodeURIComponent(JSON.stringify(params));
+    return this.http.post(
+      'https://crm.beyond.org.sg/BSSTest/Ext.Sec1.LoginInfo.json', 
+      'data=' + encodedParams,
+      r_options)
+    .map(response => response);
+  }
 }

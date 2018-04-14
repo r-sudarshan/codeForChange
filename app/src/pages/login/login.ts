@@ -34,7 +34,6 @@ export class LoginPage {
     this.loginService.login(this.account).subscribe(
       (response) => {
         loader.dismiss();
-        console.log(response);
         if (response['d']['RetVal'] != -1){
           let alert = this.alertCrl.create({
             title: 'Login Unsuccessful',
@@ -45,12 +44,20 @@ export class LoginPage {
         }
         else {
           this.navCtrl.push(MenuPage);
+          this.getUserProfile();
         }
       }
     )
   }
 
-  dismiss() {
-    this.viewCtrl.dismiss();
+  getUserProfile() {
+      this.loginService.getLoginInfo().subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
   }
-}
+} 
