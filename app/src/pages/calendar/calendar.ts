@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EventServiceProvider } from '../../providers/event-service/event-service';
 
 /**
  * Generated class for the CalendarPage page.
@@ -15,30 +16,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CalendarPage {
 
-  currentEvents = [
+  public raw_events=[]
+
+  public events = [
     {
       year: 2018,
-      month: 10,
+      month: 3,
       date: 25
     },
     {
       year: 2018,
-      month: 10,
+      month: 3,
       date: 26
     }
   ];
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private eventService: EventServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
     
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarPage');
-    
+    this.eventService.getEvents()
+      .subscribe((response) => {
+          this.raw_events = response["d"]["RetData"]["Tbl"]["Rows"];
+      });
   }
 
   onDaySelect($event){
-
+    console.log($event);
   }
 
   onMonthSelect($event){
