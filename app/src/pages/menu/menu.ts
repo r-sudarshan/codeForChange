@@ -1,3 +1,4 @@
+import { CalendarPage } from './../calendar/calendar';
 import { EventsPage } from '../events/events';
 import { DonationsPage } from '../donations/donations';
 import { Component, ViewChild } from '@angular/core';
@@ -21,7 +22,8 @@ export class MenuPage {
 
   pages: PageInterface[] = [
     { title : 'Donations', pageName : DonationsPage.name, icon: 'shuffle'},
-  	{ title: 'Events', pageName: EventsPage.name, icon: 'shuffle'}
+    { title: 'Events', pageName: EventsPage.name, icon: 'shuffle'},
+    { title: 'Event Calendar', pageName: CalendarPage.name, icon: 'calendar'}
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

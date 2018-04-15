@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventServiceProvider } from '../../providers/event-service/event-service';
-
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -18,7 +18,13 @@ export class EventsPage {
   ionViewDidLoad(){
     this.eventService.getEvents()
       .subscribe((response) => {
-          this.events = response["d"]["RetData"]["Tbl"]["Rows"];
+          let e = response["d"]["RetData"]["Tbl"]["Rows"];
+          e.forEach(element => {
+            let sd=moment(element.StartDate);
+            let ed=moment(element.EndDate);
+            let r={EventName:element.EventName, LongDesc:element.LongDesc, StartDate:sd,EndDate:ed};
+            this.events.push(r)
+          });
       });
   }
 

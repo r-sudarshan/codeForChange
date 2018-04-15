@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>Event Calendar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-calendar #calendar [events]="events" (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+  <ion-card *ngFor="let detail of today">
+  <ion-card-content>
+    <ion-card-header>
+      {{detail.Name}}
+    </ion-card-header>
+    <p>Ends on {{detail.EndDate}}</p>
+  </ion-card-content>
+  </ion-card>
+</ion-content>
