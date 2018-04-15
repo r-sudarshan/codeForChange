@@ -11,4 +11,12 @@
 
 <ion-content padding>
   <ion-calendar #calendar [events]="events" (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+  <ion-card *ngFor="let detail of today">
+  <ion-card-content>
+    <ion-card-header>
+      {{detail.Name}}
+    </ion-card-header>
+    <p>Ends on {{detail.EndDate}}</p>
+  </ion-card-content>
+  </ion-card>
 </ion-content>

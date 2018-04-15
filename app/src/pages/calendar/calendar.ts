@@ -17,8 +17,8 @@ import * as moment from 'moment';
 export class CalendarPage {
 
   public event_details=[]
-
-  public events = [];
+  public today = []
+  public events = []
   
   constructor(private eventService: EventServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
     
@@ -34,6 +34,8 @@ export class CalendarPage {
             while(start<=end){
               let r = {year:start.year(),month:start.month(),date:start.day()}
               this.events.push(r)
+              var d = {Name:element.EventName,Date:start.format('YYYYMMDD'),EndDate:end.format('YYYYMMDD')}
+              this.event_details.push(d)
               start.add(1,'day')
             };
           });
@@ -41,7 +43,14 @@ export class CalendarPage {
   }
 
   onDaySelect($event){
-
+    var d = moment([$event.year,$event.month,$event.date]).format('YYYYMMDD')
+    var r = []
+    this.event_details.forEach(detail =>{
+      if(detail.Date==d){
+        r.push(detail)
+      }
+    })
+    this.today = r
   }
 
   onMonthSelect($event){
