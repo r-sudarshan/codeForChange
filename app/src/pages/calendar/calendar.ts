@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventServiceProvider } from '../../providers/event-service/event-service';
 import * as moment from 'moment';
+import * as momenttz from 'moment-timezone'
 /**
  * Generated class for the CalendarPage page.
  *
@@ -28,17 +29,33 @@ export class CalendarPage {
     this.eventService.getEvents()
       .subscribe((response) => {
           var e = response["d"]["RetData"]["Tbl"]["Rows"];
+          var dates:Array<moment.Moment> = []
           e.forEach(element => {
-            var start=moment(element.StartDate);
-            var end=moment(element.EndDate);
-            while(start<=end){
-              let r = {year:start.year(),month:start.month(),date:start.day()}
-              this.events.push(r)
-              var d = {Name:element.EventName,Date:start.format('YYYYMMDD'),EndDate:end.format('YYYYMMDD')}
+            console.log(element.StartDate)
+            var start=momenttz.tz(element.StartDate,"UTC");
+            var end=momenttz.tz(element.EndDate,"UTC");
+            while(start<end){
+              var t = moment(start)
+              dates.push(t)
+              var d = {Name:element.EventName,Date:start.format('YYYYMMDD'),StartTime:start.format("hh:mm A"),EndTime:end.format("hh:mm A")}
               this.event_details.push(d)
               start.add(1,'day')
             };
+            if(start.diff(end,"days")>0){
+              var d1 = {Name:element.EventName,Date:start.format('YYYYMMDD'),StartTime:start.format("hh:mm A"),EndTime:end.format("hh:mm A")}
+              this.event_details.push(d1)
+            }
           });
+        var uniq:Array<moment.Moment> = []
+        dates.forEach(d=>{
+          if(uniq.indexOf(d)==-1){
+            uniq.push(d)
+          }
+        })
+        uniq.forEach(i=>{
+          let r = {year:i.year(),month:i.month(),date:i.date()}
+          this.events.push(r)
+        })
         });
   }
 
