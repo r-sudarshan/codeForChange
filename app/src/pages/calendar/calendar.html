@@ -5,10 +5,9 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     </ion-buttons>
-    <ion-title>Event Calendar</ion-title>
+    <ion-title>BSS Event Calendar</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
   <ion-calendar #calendar [events]="events" (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
   <ion-card *ngFor="let detail of today">
@@ -16,8 +15,8 @@
     <ion-card-header>
       {{detail.Name}}
     </ion-card-header>
-    <p align="right">From {{detail.StartTime}}</p>
-    <p align="right">To {{detail.EndTime}}</p>
+    <p *ngIf="detail.StartTime" align="right">From {{detail.StartTime}}</p>
+    <p *ngIf="detail.EndTime" align="right">To {{detail.EndTime}}</p>
   </ion-card-content>
   </ion-card>
 </ion-content>

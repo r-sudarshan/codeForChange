@@ -31,18 +31,17 @@ export class CalendarPage {
           var e = response["d"]["RetData"]["Tbl"]["Rows"];
           var dates:Array<moment.Moment> = []
           e.forEach(element => {
-            console.log(element.StartDate)
             var start=momenttz.tz(element.StartDate,"UTC");
             var end=momenttz.tz(element.EndDate,"UTC");
             while(start<end){
               var t = moment(start)
               dates.push(t)
-              var d = {Name:element.EventName,Date:start.format('YYYYMMDD'),StartTime:start.format("hh:mm A"),EndTime:end.format("hh:mm A")}
+              var d = {Name:element.EventName,Month:start.month(),Date:start.format('YYYYMMDD'),StartTime:start.format("hh:mm A"),EndTime:end.format("hh:mm A")}
               this.event_details.push(d)
               start.add(1,'day')
             };
             if(start.diff(end,"days")>0){
-              var d1 = {Name:element.EventName,Date:start.format('YYYYMMDD'),StartTime:start.format("hh:mm A"),EndTime:end.format("hh:mm A")}
+              var d1 = {Name:element.EventName,Month:end.month(),Date:end.format('YYYYMMDD'),StartTime:start.format("hh:mm A"),EndTime:end.format("hh:mm A")}
               this.event_details.push(d1)
             }
           });
@@ -71,7 +70,19 @@ export class CalendarPage {
   }
 
   onMonthSelect($event){
-    
+    this.today = []
+    var events = []
+    this.event_details.forEach(detail =>{
+      if(detail.Month==$event.month){
+        events.push($event)
+      }
+    })
+    var count = events.length
+    if(count==0){
+      this.today.push({Name:"There are no events this month"})
+    }else{
+      this.today.push({Name:"There are "+count+" events this month"})
+    }
   }
 
 }
