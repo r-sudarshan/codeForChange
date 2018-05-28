@@ -1,3 +1,4 @@
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
@@ -37,6 +38,10 @@ export class WelcomePage {
     this.socialSharing.shareViaSMS("Hey! Do you know about Beyond Social Services? Checkout http://beyond.org.sg/",null).then(() => {
     }).catch(() => {
     });
+  }
+
+  signup() {
+    let browser = new InAppBrowser().create('http://beyond.org.sg/', '_system'); 
   }
 
 }
