@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>Achievements</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let achieve of achivements">
+        <ion-card-content>
+          <ion-card-title>
+            {{achieve.Subject}}
+          </ion-card-title>
+          <p>
+            {{achieve.Date}}
+          </p>
+          <hr>
+          <p>{{ achieve.Remarks }}</p>
+        </ion-card-content>
+    
+
+      </ion-card>  
+</ion-content>

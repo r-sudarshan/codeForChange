@@ -18,6 +18,7 @@ import { WishAddPage } from '../pages/wish-add/wish-add';
 import { WishServiceProvider } from '../providers/wish-service/wish-service';
 import { DonationsPage } from './../pages/donations/donations';
 import { DonationServiceProvider } from '../providers/donation-service/donation-service';
+import { AchievementProvider } from '../providers/achievement-service/achievement-service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DonationServiceProvider } from '../providers/donation-service/donation-
     EventServiceProvider,
     LoginServiceProvider,
     WishServiceProvider,
-    DonationServiceProvider
+    DonationServiceProvider,
+    AchievementProvider
   ]
 })
 export class AppModule {}

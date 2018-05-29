@@ -1,3 +1,4 @@
+import { AchievementPage } from './../achievement/achievement';
 import { CalendarPage } from './../calendar/calendar';
 import { EventsPage } from '../events/events';
 import { DonationsPage } from '../donations/donations';
@@ -23,7 +24,8 @@ export class MenuPage {
   pages: PageInterface[] = [
     { title : 'Donations', pageName : DonationsPage.name, icon: 'shuffle'},
     { title: 'Events', pageName: EventsPage.name, icon: 'shuffle'},
-    { title: 'Event Calendar', pageName: CalendarPage.name, icon: 'calendar'}
+    { title: 'Event Calendar', pageName: CalendarPage.name, icon: 'calendar'},
+    { title: 'Achievements', pageName: AchievementPage.name, icon: 'medal'}
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

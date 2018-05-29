@@ -14,6 +14,7 @@ export class LoginPage {
     Password: "ChangeMe123!"
   };
 
+  
   constructor(
     public navCtrl: NavController,
     public platform: Platform,
@@ -53,10 +54,10 @@ export class LoginPage {
   getUserProfile() {
       this.loginService.getLoginInfo().subscribe(
         (response) => {
-          console.log(response);
+          this.loginService.personID = response["d"]["RetData"]["LoginID"];
         },
         (error) => {
-          console.log(error);
+          console.log("Error"+error.message);
         }
       )
   }
