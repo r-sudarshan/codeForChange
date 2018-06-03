@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-divider color="light">
+      Personal Information
+    </ion-item-divider>
+    <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input [(ngModel)]="userProfile.FirstName" placeholder="First Name" name="FirstName">{{userProfile.FirstName}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Middle Name</ion-label>
+        <ion-input [(ngModel)]="userProfile.MiddleName" placeholder="Middle Name" name="MiddleName">{{userProfile.MiddleName}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Last Name</ion-label>
+        <ion-input [(ngModel)]="userProfile.LastName" placeholder="Last Name" name="LastName">{{userProfile.LastName}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Display Name</ion-label>
+        <ion-input [(ngModel)]="userProfile.DisplayName" placeholder="Display Name">{{userProfile.DisplayName}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Gender</ion-label>
+        <ion-select placeholder="Gender" [(ngModel)]="userProfile.Gender">
+            <ion-option value="f">Female</ion-option>
+            <ion-option value="m">Male</ion-option>
+          </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Date of Birth</ion-label>
+        <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD MMM YYYY" placeholder="Date of birth" [(ngModel)]="userProfile.DateOfBirth">{{userProfile.DateOfBirth}}</ion-datetime>
+    </ion-item>
+    <ion-item-divider color="light">
+      Contact Details
+    </ion-item-divider>
+    <ion-item>
+        <ion-label stacked>Telephone</ion-label>
+        <ion-input type="tel" placeholder="Phone No." [(ngModel)]="userProfile.Telephone">{{userProfile.Telephone}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Mobile</ion-label>
+        <ion-input type="tel" placeholder="Mobile No." [(ngModel)]="userProfile.Mobile">{{userProfile.Mobile}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="email" placeholder="Email Address" [(ngModel)]="userProfile.Email">{{userProfile.Email}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Full Address</ion-label>
+        <ion-input placeholder="Home Address" [(ngModel)]="userProfile.FullAddress">{{userProfile.FullAddress}}</ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -45,13 +45,13 @@ export class LoginPage {
         }
         else {
           this.navCtrl.push(MenuPage);
-          this.getUserProfile();
+          this.getLoginInfo();
         }
       }
     )
   }
 
-  getUserProfile() {
+  getLoginInfo() {
       this.loginService.getLoginInfo().subscribe(
         (response) => {
           this.loginService.personID = response["d"]["RetData"]["LoginID"];
